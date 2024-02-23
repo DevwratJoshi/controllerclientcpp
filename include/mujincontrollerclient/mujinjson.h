@@ -288,6 +288,8 @@ inline void LoadJsonValue(const rapidjson::Value& v, int& t) {
         t = LexicalCast<int>(v.GetString(), "Int");
     } else if (v.IsBool()) {
         t = v.GetBool() ? 1 : 0;
+    } else if (v.IsDouble()) {
+        t = v.GetDouble();
     } else {
         throw MujinJSONException("Cannot convert json type " + GetJsonString(v) + " to Int");
     }
